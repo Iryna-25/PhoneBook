@@ -1,13 +1,12 @@
 import React, { useEffect } from "react";
 import { useDispatch } from "react-redux";
-
 import { fetchContacts } from "../redux/contacts/contacts-operations";
 
-import ContactsList from "../components/Contacts/ContactsList/ContactsList";
-import ContactsForm from "../components/Contacts/ContactsForm/ContactsForm";
-import Filter from "../components/Contacts/Filter/Filter";
+import ContactsList from "../components/Contacts/ContactsList";
+import ContactsForm from "../components/Contacts/ContactsForm";
+import Filter from "../components/Contacts/Filter";
 
-import Wrapper from "../components/Wrapper.styled";
+import { Wrapper } from "../styles/Elements.styled.jsx";
 
 
 const ContactsPage = (params) => {

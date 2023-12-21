@@ -2,16 +2,8 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { authOperations } from "../redux/auth";
 
-const styles = {
-  form: {
-    width: 320,
-  },
-  label: {
-    display: "flex",
-    flexDirection: "column",
-    marginBottom: 15,
-  },
-};
+import {  Wrapper, Form, Input } from "../styles/Elements.styled.jsx";
+
 
 export default function RegisterPage() {
   const dispatch = useDispatch();
@@ -41,37 +33,42 @@ export default function RegisterPage() {
   };
 
   return (
-    <div>
-      <h1>Signup</h1>
+    <Wrapper>
+      <h2>Signup</h2>
 
-      <form onSubmit={handleSubmit} style={styles.form} autoComplete="off">
-        <label style={styles.label}>
+      <Form onSubmit={handleSubmit} autoComplete="off">
+        <label>
           Name
-          <input type="text" name="name" value={name} onChange={handleChange} />
+          <Input 
+            type="text" 
+            name="name" 
+            value={name} 
+            onChange={handleChange}
+          />
         </label>
 
-        <label style={styles.label}>
+        <label>
           Email
-          <input
+          <Input
             type="email"
             name="email"
             value={email}
-            onChange={handleChange}
-          />
+            onChange={handleChange}>
+          </Input>
         </label>
 
-        <label style={styles.label}>
+        <label>
           Password
-          <input
+          <Input
             type="password"
             name="password"
             value={password}
-            onChange={handleChange}
-          />
+            onChange={handleChange}>
+          </Input>
         </label>
 
         <button type="submit">Sign Up</button>
-      </form>
-    </div>
+      </Form>
+    </Wrapper>
   );
 }

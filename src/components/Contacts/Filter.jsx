@@ -1,10 +1,9 @@
 import { useSelector, useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
-import { Header2, SearchInput } from './Filter.styled';
-import { changeFilter } from '../../../redux/contacts/contacts-actions';
-import { getFilter } from '../../../redux/contacts/contacts-selector';
+import { changeFilter } from '../../redux/contacts/contacts-actions';
+import { getFilter } from '../../redux/contacts/contacts-selector';
 
-
+import { SearchInput } from '../../styles/Elements.styled';
 
 export default function Filter() {
     const value = useSelector(getFilter);
@@ -12,7 +11,7 @@ export default function Filter() {
 
     return (
         <div>
-            <Header2 htmlFor="">Contacts</Header2>
+            <h2 htmlFor="">Contacts</h2>
             Find contacts by name
             <SearchInput
                 type="text"

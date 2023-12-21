@@ -1,15 +1,22 @@
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { Routes, Route } from "react-router-dom";
+import { authOperations } from "./redux/auth";
+
 import AppBar from "./components/AppBar";
-import HomePage from "./pages/HomePage";
+import Container from "./components/Container";
+import PrivateRoute from "./components/Routes/PrivateRoute"; 
+import PublicRoute from "./components/Routes/PublicRoute";
+import HomePublicPage from "./pages/HomePublicPage";
+import HomePrivatePage from "./pages/HomePrivatePage";
+import AboutUsPage from "./pages/AboutUsPage";
 import RegisterPage from "./pages/RegisterPage";
 import LoginPage from "./pages/LoginPage";
 import ContactsPage from "./pages/ContactsPage";
-import Container from "./components/Container";
-import { authOperations } from "./redux/auth";
-import PrivateRoute from "./components/PrivateRoute"; 
-import PublicRoute from "./components/PublicRoute";
+import NotesPage from "./pages/NotesPage";
+
+
+
 
 export default function App() {
   const dispatch = useDispatch();
@@ -28,7 +35,17 @@ export default function App() {
           path="/"
           element={
             <PublicRoute restricted>
-              <HomePage />
+              <HomePublicPage />
+            </PublicRoute>
+          }
+        />
+
+        <Route
+          exact
+          path="/about"
+          element={
+            <PublicRoute restricted>
+              <AboutUsPage />
             </PublicRoute>
           }
         />
@@ -55,10 +72,30 @@ export default function App() {
 
         <Route
           exact
+          path="/homeuser"
+          element={
+            <PrivateRoute restricted>
+              <HomePrivatePage />
+            </PrivateRoute>
+          }
+        />
+
+        <Route
+          exact
           path="/contacts"
           element={
             <PrivateRoute restricted>
               <ContactsPage />
+            </PrivateRoute>
+          }
+        />
+
+        <Route
+          exact
+          path="/notes"
+          element={
+            <PrivateRoute restricted>
+              <NotesPage />
             </PrivateRoute>
           }
         />

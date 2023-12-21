@@ -1,14 +1,10 @@
 import { useEffect } from 'react';
 import PropTypes from 'prop-types';
-
-import { deleteContact, fetchContacts } from '../../../redux/contacts/contacts-operations';
-
-import {  List, Item, DeleteButton } from './ContactsList.styled';
 import { useSelector, useDispatch } from 'react-redux';
+import { deleteContact, fetchContacts } from '../../redux/contacts/contacts-operations';
+import { getFoundedContacts } from "../../redux/contacts/contacts-selector";
 
-import { getFoundedContacts } from "../../../redux/contacts/contacts-selector";
-
-
+import { List, Item, DeleteButton } from '../../styles/Elements.styled.jsx';
 
 const ContactsList = () => {
     const contacts = useSelector(state => getFoundedContacts(state));
