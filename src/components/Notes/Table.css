@@ -1,5 +1,6 @@
 .table-wrapper {
   width: 100%;
+  justify-content: center;
 }
   
 .table {
@@ -9,7 +10,7 @@
   border-collapse: collapse;
   border-radius: 10px;
   white-space: nowrap;
-  max-width: 80%;
+  max-width: 40%;
   justify-content: center;
   margin: auto;
   table-layout: auto;

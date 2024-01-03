@@ -45,13 +45,15 @@ export default function NotesPage() {
   };
 
   return (
-    <Wrapper> 
+    <div> 
       <h2> My Notes</h2>
       <h3> Create and edite your todo list </h3>
-      <Table rows={rows} deleteRow={handleDeleteRow} editRow={handleEditRow} />
-      <AddButton onClick={() => setModalOpen(true)} className="btn">
-        Add
-      </AddButton>
+        <Table rows={rows} deleteRow={handleDeleteRow} editRow={handleEditRow} />
+        <Wrapper>
+          <AddButton onClick={() => setModalOpen(true)}>
+            Add
+          </AddButton>
+        </Wrapper>
       {modalOpen && (
         <Modal
           closeModal={() => {
@@ -62,6 +64,6 @@ export default function NotesPage() {
           defaultValue={rowToEdit !== null && rows[rowToEdit]}
         />
       )}
-    </Wrapper>
+    </div>
   );
 }

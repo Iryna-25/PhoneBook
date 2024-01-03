@@ -97,6 +97,7 @@ div {
   margin: auto;
   margin-right: 0rem;
   padding: 0rem;
+  justify-content: center;
 }
 
 a {
