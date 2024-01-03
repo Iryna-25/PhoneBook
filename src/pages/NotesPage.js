@@ -1,55 +1,67 @@
-import React, { useState } from "react";
-import TodoItem from "../components/Notes/TodoItem.jsx";
-import CreateTodoField from "../components/Notes/CreateTodoField.jsx";
+import { useState } from "react";
 
-import { Wrapper } from "../styles/Elements.styled.jsx";
+import { Table } from "../components/Notes/Table";
+import { Modal } from "../components/Notes/Modal";
+import { AddButton, Wrapper } from "../styles/Elements.styled";
 
-
-const data = [
+export default function NotesPage() {
+  const [modalOpen, setModalOpen] = useState(false);
+  const [rows, setRows] = useState([
   {
-    _id: 'tywe4',
-    title: 'Call to Tommy',
-    isCompleted: false,
+    description: "Repair the table",
+    category: "Home",
   },
   {
-    _id: 'tywe67454',
-    title: 'Finish the essay',
-    isCompleted: false,
+    description: "Call mom on the weekend",
+    category: "Family",
   },
   {
-    _id: 'tywghe4',
-    title: 'Complete the app',
-    isCompleted: false,
-  },
-] 
+    description: "Buy a missing lego part",
+    category: "Hobby",
+    },
+  ]);
+  const [rowToEdit, setRowToEdit] = useState(null);
 
-const NotesPage = () => {
-  const [todos, setTodos] = useState(data);
-  const changeTodo = (id) => {
-    const copy = [...todos]
-    const current = copy.find(t => t._id === id)
-    current.isCompleted = !current.isCompleted
-    setTodos(copy) 
-  }
+  const handleDeleteRow = (targetIndex) => {
+    setRows(rows.filter((_, idx) => idx !== targetIndex));
+  };
 
-  const removeTodo = (id) => {
-    setTodos([...todos].filter(t => t._id !== id))
-  }
+  const handleEditRow = (idx) => {
+    setRowToEdit(idx);
 
-  return (  
-    <Wrapper>
-      <h1> My Notes</h1>
-      <h3> Here will be your notes </h3>
-      {todos.map(todo => (
-        <TodoItem 
-          key={todo._id} 
-          todo={todo} 
-          changeTodo={changeTodo}
-          removeTodo={removeTodo}/>
-      ) )}
-      <CreateTodoField setTodos={setTodos}/>
+    setModalOpen(true);
+  };
+
+  const handleSubmit = (newRow) => {
+    rowToEdit === null
+      ? setRows([...rows, newRow])
+      : setRows(
+          rows.map((currRow, idx) => {
+            if (idx !== rowToEdit) return currRow;
+
+            return newRow;
+          })
+        );
+  };
+
+  return (
+    <Wrapper> 
+      <h2> My Notes</h2>
+      <h3> Create and edite your todo list </h3>
+      <Table rows={rows} deleteRow={handleDeleteRow} editRow={handleEditRow} />
+      <AddButton onClick={() => setModalOpen(true)} className="btn">
+        Add
+      </AddButton>
+      {modalOpen && (
+        <Modal
+          closeModal={() => {
+            setModalOpen(false);
+            setRowToEdit(null);
+          }}
+          onSubmit={handleSubmit}
+          defaultValue={rowToEdit !== null && rows[rowToEdit]}
+        />
+      )}
     </Wrapper>
   );
 }
-
-export default NotesPage

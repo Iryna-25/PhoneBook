@@ -21,11 +21,11 @@ body {
   line-height: 1.5;
   background-image: linear-gradient(
     to bottom,
-    rgba(0,0,0,0.8),
-    rgba(0,0,0,0.2)),
-    url("/src/assets/priscilla-du-preez-BjhUu6BpUZA-unsplash.jpg");
-    background-position: center center;
-    background-size: cover;
+    rgba(0,0,0,0.5),
+    rgba(0,0,0,0.1)),
+    url("/src/assets/phone.png");
+    background-position: left bottom;
+    /* background-size: cover; */
     background-repeat: no-repeat;
 }
 
@@ -54,23 +54,31 @@ h1 {
   color: #d9d5ce;
   text-align: center;
   padding: 0rem 2rem;
-  font-size: 5rem;
+  font-size: 15rem;
 }
 
 h2 {
-  font-size: 3rem;
+  font-size: 7rem;
+  text-align: center;
   padding: 1rem 0rem;
 }
 
 h3 {
-  font-size: 1.5rem;
+  font-size: 2rem;
+  padding: 0.25rem 1rem;
+  text-align: center;
+}
+
+h4 {
+  color:#18181b;
+  font-size: 1.25rem;
   padding: 1rem 1rem;
   text-align: center;
 }
 
 p {
   margin-top: 0;
-  font-size: 0.75rem;
+  font-size: 1.25rem;
   padding: 1rem 1rem;
   text-align: center;
 }
@@ -80,6 +88,7 @@ ul {
 }
 
 header {
+  width: 100%;
   display: flex;
   justify-content: space-between;
 }
@@ -149,7 +158,15 @@ input {
 
 input::placeholder {
   font-family: 'Montserrat', 'Open Sans', sans-serif;
-  color: #5f5d5d;
+  color: #a9a7a7;
   font-size: 1.5rem;
   background-color: transparent;
+}
+/* Carousel */
+.indicator-symbol {
+  color: #26343f;
+}
+
+.indicator-symbol-active {
+  color: #ffffff;
 }

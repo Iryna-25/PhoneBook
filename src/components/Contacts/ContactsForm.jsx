@@ -33,7 +33,7 @@ export default function ContactForm() {
 
   return (
     <div>
-      <h1> Phonebook </h1>
+      <h2> Phonebook </h2>
       <Form onSubmit={handleSubmit}>
         <label>
           Name
